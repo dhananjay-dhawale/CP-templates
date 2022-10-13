@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+#define int long long int
+
+void solve(){
+
+}
+     
+signed main() {
+
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
+
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif // ONLINE_JUDGE
+
+    int t = 1;
+    std::cin >> t;
+    while(t--){
+        solve();
+    }
+}
