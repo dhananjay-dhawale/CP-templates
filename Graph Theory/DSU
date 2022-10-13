@@ -1,0 +1,32 @@
+
+std::vector <int> parent;
+std::vector <int> rankk;
+
+int findPar(int node){
+    if(node == parent[node])
+        return node;
+    return parent[node] = findPar(parent[node]);
+}
+
+void unionn (int u, int v){
+    u = findPar(u);
+    v = findPar(v);
+
+    if(rankk[u] < rankk[v])
+        parent[u] = v;
+    else if(rankk[v] < rankk[u])
+        parent[v] = u;
+    else{
+        parent[v] = u;
+        rankk[u]++;
+    }
+}
+
+void dsu(int n){
+    parent.resize(n+1);
+    rankk.resize(n+1);
+    for(int i=0; i<=n; i++){
+        rankk[i] = 0;
+        parent[i] = i;
+    }
+}
