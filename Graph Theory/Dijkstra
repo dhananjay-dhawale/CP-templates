@@ -1,0 +1,24 @@
+std::vector <int> dijkstra(int n, int src, std::vector <std::pair<int,int>> adj[]) {
+    std::vector <int> dp(n, 1e15), vis(n);
+    dp[src] = 0;
+    std::priority_queue <std::pair<int,int>, std::vector <std::pair<int,int>>, std::greater<std::pair<int,int>>> pq;
+    pq.push({0ll, src});
+    while(!pq.empty()) {
+        int len = pq.size();
+        while(len--) {
+            std::pair <int,int> p = pq.top();
+            pq.pop();
+            int u = p.second;
+            if(vis[u])
+                continue;
+            vis[u] = 1;
+            for(auto [v, wt] : adj[u]) {
+                if(dp[v] > wt + dp[u]) {
+                    dp[v] = wt + dp[u];
+                    pq.push({dp[v], v});
+                }
+            }
+        }
+    }
+    return dp;
+}
